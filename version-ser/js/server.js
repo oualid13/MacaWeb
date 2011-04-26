@@ -1,18 +1,19 @@
 //inclure les modules necessaire
 
 	var util	= require('util'),
-		http	= require('http'),
-		sys		= require('sys'),
-		url		= require('url'),
-		path	= require('path'),
-		fs		= require('fs'),
-		crypto	= require('crypto'),
-		maca	= require('./maca/maca.js'),
-		clean	= require ('./clean.js'),
-		port	= '8132',
-		root	= '..';
+	http		= require('http'),
+	sys		= require('sys'),
+	url		= require('url'),
+	path		= require('path'),
+	fs		= require('fs'),
+	crypto		= require('crypto'),
+	maca		= require('./maca/maca.js'),
+	clean		= require ('./clean.js'),
+	port		= '8132',
+	root		= '..',
+	server;
 
-//recuperer les exceptions pour que le serveur puisse continuer a executer
+//recuperer les exceptions pour que le serveur puisse continuer a tourner
 process.on('uncaughtException', function (err) {
 	console.log('  Caught exception	: ' + err);
 });
@@ -23,13 +24,13 @@ console.log = function(text){
 }
 
 //creer le serveur
-http.createServer(function (req, res) {
+server	= http.createServer(function (req, res) {
 	//le serveur a recu une requete "req" et va renvoyer le resultat "res"
 
 	var file,
 	//decomposer la requete en un objet literal
 	Request=url.parse(req.url,true);
-	console.log('  Header		: '+require('util').inspect(req.headers, true, null));
+	//console.log('  Response		: '+util.inspect(res.socket, true, null));
 
 	//si la requete est trop longue on la refuse
 	if(Request.search.length>130){
@@ -69,13 +70,10 @@ http.createServer(function (req, res) {
 
 					console.log('  Response		: /data/'+filename+'.png');
 				}
-
 			});
-
 		} else{
 
 		}
-
 	}else{ //si la requete ne contient pas des parametres alors elle sera traiter comme un nom de fichier
 
 		var	uri;
@@ -91,12 +89,10 @@ http.createServer(function (req, res) {
 		path.exists(file, function(exists){
 
 			if(!exists){
-	
 				//si le fichier demandé n'existe pas sur le serveur on renvoie la page d'erreur
 				req.url	= '/error.html';
 				uri		= url.parse(root+req.url).pathname;
 				file	= path.join(process.cwd(), uri);
-
 			}
 
 			fs.readFile(file, "binary", function(err, file2){
@@ -106,7 +102,7 @@ http.createServer(function (req, res) {
 					res.end();
 					return;
 				}
-	  			//envoyer le fichier demandé
+				//envoyer le fichier demandé
 				res.writeHead(200);
 				res.write(file2, "binary");
 				res.end();
@@ -114,9 +110,10 @@ http.createServer(function (req, res) {
 				console.log('  Response "file"	: ' + req.url);
 			});
 		});
-
 	}
 
-}).listen(parseInt(port));
+});
 
-console.log('  Server running at	: http://127.0.0.1:'+port+'/');
+server.listen(parseInt(port),'127.0.0.1');
+
+console.log('  Server running at	: http://'+server.address().address+':'+server.address().port+'/');
