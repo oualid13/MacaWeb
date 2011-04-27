@@ -2,15 +2,17 @@
 
 	var util	= require('util'),
 	http		= require('http'),
-	sys		= require('sys'),
-	url		= require('url'),
+	sys			= require('sys'),
+	url			= require('url'),
 	path		= require('path'),
-	fs		= require('fs'),
+	fs			= require('fs'),
 	crypto		= require('crypto'),
 	maca		= require('./maca/maca.js'),
 	clean		= require ('./clean.js'),
+	hash		= require ('./hash.js'),
 	port		= '8132',
 	root		= '..',
+	clients		= new  hash.Hash(),
 	server;
 
 //recuperer les exceptions pour que le serveur puisse continuer a tourner
@@ -19,18 +21,38 @@ process.on('uncaughtException', function (err) {
 });
 
 //ajouter la date au log
-console.log = function(text){
+console.log = function(text)
+{
     sys.puts(Date() + " " + text);
 }
 
+//classe caché client
+function Client (ip)
+{
+	this.ip			= ip;
+	this.req_number	= 0;
+	this.requests	= new hash.Hash();
+}
+
 //creer le serveur
-server	= http.createServer(function (req, res) {
+server	= http.createServer(function (req, res) 
+{
 	//le serveur a recu une requete "req" et va renvoyer le resultat "res"
+	
+	//on ajoute le client
+	var cli	= new Client (util.inspect(res.socket.remoteAddress, true, null));
+	
+	clients.setItem (cli.ip,cli);
+	clients.getItem (cli.ip).req_number++;
 
 	var file,
 	//decomposer la requete en un objet literal
 	Request=url.parse(req.url,true);
-	console.log('  Client		: '+util.inspect(res.socket.remoteAddress, true, null));
+	console.log('  Client		: '+cli.ip);
+	console.log('				: '+clients.getItem (cli.ip).req_number);
+	if(clients.getItem (cli.ip).req_number>20){
+		req.abort();
+	}
 
 	//si la requete est trop longue on la refuse
 	if(Request.search.length>130){
