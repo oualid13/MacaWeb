@@ -1,4 +1,5 @@
-exports.Hash = function ()
+
+exports.Hash = function (util)
 {
 	this.length = 0;
 	this.items = new Array();
@@ -32,7 +33,8 @@ exports.Hash = function ()
 			if (typeof(this.items[in_key]) == 'undefined') {
 				this.length++;
 				this.items[in_key] = in_value;
-				console.log ('new client');
+				//console.log ('  key			: '+in_key);
+				//console.log ('  value		: '+util.inspect(in_value, true, null));
 			}
 			
 		}

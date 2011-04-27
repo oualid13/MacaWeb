@@ -1,11 +1,11 @@
 digraph g {
 	node [label="\N"];
-	graph [bb="0,0,96,252"];
-	"mc1s1_t1#token84" [label=ghjkklm, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="48,18", width="0.97", height="0.50"];
-	"mc1s1_W1#wordmc1s1_t1#token" [label=ghjkklm, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="48,90", width="1.33", height="0.50"];
-	"mc1s1_P13#pos" [label=np, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="48,162", width="0.75", height="0.50"];
-	"mc1s1_chk0#chunk" [label=GN, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, arrowhead=doubleoctagon, pos="48,234", width="0.75", height="0.50"];
-	"mc1s1_W1#wordmc1s1_t1#token" -> "mc1s1_t1#token84" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="48,72 48,61 48,47 48,36"];
-	"mc1s1_P13#pos" -> "mc1s1_W1#wordmc1s1_t1#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="48,144 48,133 48,119 48,108"];
-	"mc1s1_chk0#chunk" -> "mc1s1_P13#pos" [color=blue, fontcolor=blue, style=bold, minlen=1, shape=normal, pos="e,48,180 48,216 48,208 48,199 48,190"];
+	graph [bb="0,0,104,252"];
+	"mc1s1_t1#token84" [label=jhsdkjfds, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="52,18", width="1.03", height="0.50"];
+	"mc1s1_W1#wordmc1s1_t1#token" [label=jhsdkjfds, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="52,90", width="1.44", height="0.50"];
+	"mc1s1_P13#pos" [label=np, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="52,162", width="0.75", height="0.50"];
+	"mc1s1_chk0#chunk" [label=GN, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, arrowhead=doubleoctagon, pos="52,234", width="0.75", height="0.50"];
+	"mc1s1_W1#wordmc1s1_t1#token" -> "mc1s1_t1#token84" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="52,72 52,61 52,47 52,36"];
+	"mc1s1_P13#pos" -> "mc1s1_W1#wordmc1s1_t1#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="52,144 52,133 52,119 52,108"];
+	"mc1s1_chk0#chunk" -> "mc1s1_P13#pos" [color=blue, fontcolor=blue, style=bold, minlen=1, shape=normal, pos="e,52,180 52,216 52,208 52,199 52,190"];
 }

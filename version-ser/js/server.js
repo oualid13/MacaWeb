@@ -12,7 +12,7 @@
 	hash		= require ('./hash.js'),
 	port		= '8132',
 	root		= '..',
-	clients		= new  hash.Hash(),
+	clients		= new  hash.Hash(util),
 	server;
 
 //recuperer les exceptions pour que le serveur puisse continuer a tourner
@@ -26,12 +26,19 @@ console.log = function(text)
     sys.puts(Date() + " " + text);
 }
 
+//afficher un objet
+function log_obj(obj)
+{
+	for (var i in obj)
+		console.log('		key is: ' + i /*+ ', value is: ' + util.inspect(obj[i], true, null)*/);
+}
+
 //classe caché client
 function Client (ip)
 {
 	this.ip			= ip;
 	this.req_number	= 0;
-	this.requests	= new hash.Hash();
+	this.requests	= new hash.Hash(util);
 }
 
 //creer le serveur
@@ -48,19 +55,22 @@ server	= http.createServer(function (req, res)
 	var file,
 	//decomposer la requete en un objet literal
 	Request=url.parse(req.url,true);
-	console.log('  Client		: '+cli.ip);
-	console.log('				: '+clients.getItem (cli.ip).req_number);
-	if(clients.getItem (cli.ip).req_number>20){
-		req.abort();
+	sys.puts('\n');
+	console.log('  Client '+cli.ip);
+	console.log('  	request number			: '+clients.getItem (cli.ip).req_number);
+	
+	if(clients.getItem (cli.ip).req_number>2000){
+		res.destroy();
+		return;
 	}
-
+		
 	//si la requete est trop longue on la refuse
 	if(Request.search.length>130){
 		res.writeHead(500, {"Content-Type": "text/plain"});
 		res.write("Requete trés longue\n");
 		res.end();
 
-		console.log('  Response : Requete trés longue');
+		console.log('  Response				: Requete trés longue');
 		return;
 	}
 
@@ -72,7 +82,13 @@ server	= http.createServer(function (req, res)
 		if( Request.query.app == 'Maca' ){
 
 			var sentence	= clean.clean(Request.query.sentence);
-			console.log('  Request "Macaon"	: '+req.url);
+			console.log('  	Request "Macaon"		: '+req.url);
+			
+			//ajouter la requete au client
+			clients.getItem(cli.ip).requests.setItem(Request.query.T,Request);
+			console.log(' 	Requests 			: ');
+			log_obj(clients.getItem(cli.ip).requests.items);
+			sys.puts('\n');
 			filename	= crypto.createHash('md5').update(sentence).digest("hex");
 			pathfile	= '/data/' + filename ;
 
@@ -82,17 +98,18 @@ server	= http.createServer(function (req, res)
 
 				if(!exists){
 					//s'il n'existe pas on le genére avec le macaon
-					maca.macaon(pathfile,root,sentence,res);
+					maca.macaon(pathfile,root,sentence,res,cli);
 
 				}  else{
 					//s'il existe deja on renvoie le nom du fichier
-					console.log('  file"/data/'+filename+'.png" already exists!');
+					//console.log('  file"/data/'+filename+'.png" already exists!');
+					console.log('  Response to '+cli.ip+' "text"	: /data/'+filename+'.png');
 					res.writeHead(200, {'Content-Type': 'text/plain'});
 					res.end('/data/'+filename+'.png');
-
-					console.log('  Response		: /data/'+filename+'.png');
+					
 				}
 			});
+			clients.getItem(cli.ip).requests.removeItem(Request.query.T);
 		} else{
 
 		}
@@ -105,8 +122,9 @@ server	= http.createServer(function (req, res)
 			Request.pathname='/MacaWeb.html';
 
 		uri	= url.parse(root+Request.pathname).pathname;
-		console.log('  Request  "file"	: '+Request.pathname);
-
+		console.log('  	Request  "file"			: '+Request.pathname);
+		sys.puts('\n');
+		
 		file	= path.join(process.cwd(), uri);
 		path.exists(file, function(exists){
 
@@ -125,11 +143,10 @@ server	= http.createServer(function (req, res)
 					return;
 				}
 				//envoyer le fichier demandé
+				console.log('  Response to '+cli.ip+' "file"	: ' + Request.pathname);
 				res.writeHead(200);
 				res.write(file2, "binary");
 				res.end();
-
-				console.log('  Response "file"	: ' + req.url);
 				
 			});
 		});
@@ -140,5 +157,5 @@ server	= http.createServer(function (req, res)
 server.listen(parseInt(port),'127.0.0.1');
 
 
-console.log('  Server running at	: http://'+server.address().address+':'+server.address().port+'/');
+console.log('  Server running at			: http://'+server.address().address+':'+server.address().port+'/');
 
