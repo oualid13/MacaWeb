@@ -30,7 +30,7 @@ server	= http.createServer(function (req, res) {
 	var file,
 	//decomposer la requete en un objet literal
 	Request=url.parse(req.url,true);
-	//console.log('  Response		: '+util.inspect(res.socket, true, null));
+	console.log('  Client		: '+util.inspect(res.socket.remoteAddress, true, null));
 
 	//si la requete est trop longue on la refuse
 	if(Request.search.length>130){
@@ -108,6 +108,7 @@ server	= http.createServer(function (req, res) {
 				res.end();
 
 				console.log('  Response "file"	: ' + req.url);
+				
 			});
 		});
 	}

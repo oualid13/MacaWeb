@@ -25,7 +25,7 @@ var request	= function ()
 				else*/
 					img.src=xhr.responseText;
 				
-			}else if(xhr.status == 500 )
+			} else if(xhr.status == 500 )
 					alert(xhr.responseText);
 		}
 	};
