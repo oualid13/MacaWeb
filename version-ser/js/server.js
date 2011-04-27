@@ -91,7 +91,7 @@ server	= http.createServer(function (req, res) {
 			if(!exists){
 				//si le fichier demandé n'existe pas sur le serveur on renvoie la page d'erreur
 				req.url	= '/error.html';
-				uri		= url.parse(root+req.url).pathname;
+				uri	= url.parse(root+req.url).pathname;
 				file	= path.join(process.cwd(), uri);
 			}
 
