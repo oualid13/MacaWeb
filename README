@@ -1,2 +1,3 @@
-readme
-une ligne de plus
+MacaWeb is a web demo for the macaon appliacation .
+It uses nodejs on server side,html5 and Javascript on the client side. They allow for dynamic interactions.
+
