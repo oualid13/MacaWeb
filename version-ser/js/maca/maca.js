@@ -15,7 +15,6 @@ exports.macaon	= function (filename,root,sentence,res,cli)
 						
 	});
 	
-	
 }
 
 exports.macaviz	= function (filename,root,res,cli)

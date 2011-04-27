@@ -1,11 +1,25 @@
 digraph g {
 	node [label="\N"];
-	graph [bb="0,0,104,252"];
-	"mc1s1_t1#token84" [label=jhsdkjfds, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="52,18", width="1.03", height="0.50"];
-	"mc1s1_W1#wordmc1s1_t1#token" [label=jhsdkjfds, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="52,90", width="1.44", height="0.50"];
-	"mc1s1_P13#pos" [label=np, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="52,162", width="0.75", height="0.50"];
-	"mc1s1_chk0#chunk" [label=GN, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, arrowhead=doubleoctagon, pos="52,234", width="0.75", height="0.50"];
-	"mc1s1_W1#wordmc1s1_t1#token" -> "mc1s1_t1#token84" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="52,72 52,61 52,47 52,36"];
-	"mc1s1_P13#pos" -> "mc1s1_W1#wordmc1s1_t1#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="52,144 52,133 52,119 52,108"];
-	"mc1s1_chk0#chunk" -> "mc1s1_P13#pos" [color=blue, fontcolor=blue, style=bold, minlen=1, shape=normal, pos="e,52,180 52,216 52,208 52,199 52,190"];
+	graph [bb="0,0,273,252"];
+	"mc1s1_t1#token84" [label=jea, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="27,18", width="0.75", height="0.50"];
+	"mc1s1_W1#wordmc1s1_t1#token" [label=jea, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="27,90", width="0.75", height="0.50"];
+	"mc1s1_P13#pos" [label=np, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="27,162", width="0.75", height="0.50"];
+	"mc1s1_chk0#chunk" [label=GN, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, arrowhead=doubleoctagon, pos="27,234", width="0.75", height="0.50"];
+	"mc1s1_t2#token87" [label=":", shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="118,18", width="0.75", height="0.50"];
+	"mc1s1_W2#wordmc1s1_t2#token" [label=":", shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="118,90", width="0.75", height="0.50"];
+	"mc1s1_P26L1#pos" [label=ponctw, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="118,162", width="1.28", height="0.50"];
+	"mc1s1_t3#token78" [label=hgjhghjjh, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="218,18", width="1.11", height="0.50"];
+	"mc1s1_W3#wordmc1s1_t3#token" [label=hgjhghjjh, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="218,90", width="1.53", height="0.50"];
+	"mc1s1_P39#pos" [label=np, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="218,162", width="0.75", height="0.50"];
+	"mc1s1_chk1#chunk" [label=GN, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, arrowhead=doubleoctagon, pos="218,234", width="0.75", height="0.50"];
+	"mc1s1_P26L1#pos#empty" [shape=point, fillcolor=white, fontcolor=white, color=white, size=2, pos="118,234", width="0.06", height="0.06"];
+	"mc1s1_W1#wordmc1s1_t1#token" -> "mc1s1_t1#token84" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="27,72 27,61 27,47 27,36"];
+	"mc1s1_P13#pos" -> "mc1s1_W1#wordmc1s1_t1#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="27,144 27,133 27,119 27,108"];
+	"mc1s1_chk0#chunk" -> "mc1s1_P13#pos" [color=blue, fontcolor=blue, style=bold, minlen=1, shape=normal, pos="e,27,180 27,216 27,208 27,199 27,190"];
+	"mc1s1_W2#wordmc1s1_t2#token" -> "mc1s1_t2#token87" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="118,72 118,61 118,47 118,36"];
+	"mc1s1_P26L1#pos" -> "mc1s1_W2#wordmc1s1_t2#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="118,144 118,133 118,119 118,108"];
+	"mc1s1_W3#wordmc1s1_t3#token" -> "mc1s1_t3#token78" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="218,72 218,61 218,47 218,36"];
+	"mc1s1_P39#pos" -> "mc1s1_W3#wordmc1s1_t3#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="218,144 218,133 218,119 218,108"];
+	"mc1s1_chk1#chunk" -> "mc1s1_P39#pos" [color=blue, fontcolor=blue, style=bold, minlen=1, shape=normal, pos="e,218,180 218,216 218,208 218,199 218,190"];
+	"mc1s1_P26L1#pos#empty" -> "mc1s1_P26L1#pos" [color=white, fontcolor=white, minlen=1, shape=none, pos="e,118,180 118,232 118,225 118,207 118,190"];
 }
