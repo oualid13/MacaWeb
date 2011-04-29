@@ -1,0 +1,3 @@
+In this version the server saves clients information, so it cans restrict requests number for each client.
+also if the server receives a group of requests from the same client it tries to process the last request 
+and abort the rest of requests.

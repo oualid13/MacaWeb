@@ -1,0 +1,3 @@
+In this version the client sends a request to the server, the server generates a DOT file wich contains
+the graph information and sends it to the client.
+The client retrieve the DOT file and uses the canviz library to generate the graph in a 'canvas'element.

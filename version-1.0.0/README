@@ -1,0 +1,3 @@
+In this version the client sends a request to the server, the server generates the graph image 
+and sends it to the client.
+
