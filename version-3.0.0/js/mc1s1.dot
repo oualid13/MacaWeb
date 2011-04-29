@@ -1,0 +1,17 @@
+digraph g {
+	node [label="\N"];
+	graph [bb="0,0,192,252"];
+	"mc1s1_t1#token84" [label=ramadan, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="53,18", width="1.06", height="0.50"];
+	"mc1s1_W1#wordmc1s1_t1#token" [label=ramadan, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="53,90", width="1.47", height="0.50"];
+	"mc1s1_P10#pos" [label=det, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="69,162", width="0.75", height="0.50"];
+	"mc1s1_t3#token87" [label=hami, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="158,18", width="0.75", height="0.50"];
+	"mc1s1_W2#wordmc1s1_t3#token" [label=hami, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="158,90", width="0.94", height="0.50"];
+	"mc1s1_P38#pos" [label=np, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="149,162", width="0.75", height="0.50"];
+	"mc1s1_chk0#chunk" [label=GN, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, arrowhead=doubleoctagon, pos="109,234", width="0.75", height="0.50"];
+	"mc1s1_W1#wordmc1s1_t1#token" -> "mc1s1_t1#token84" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="53,72 53,61 53,47 53,36"];
+	"mc1s1_P10#pos" -> "mc1s1_W1#wordmc1s1_t1#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="65,146 63,135 60,120 57,108"];
+	"mc1s1_W2#wordmc1s1_t3#token" -> "mc1s1_t3#token87" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="158,72 158,61 158,47 158,36"];
+	"mc1s1_P38#pos" -> "mc1s1_W2#wordmc1s1_t3#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="151,145 153,134 154,119 156,108"];
+	"mc1s1_chk0#chunk" -> "mc1s1_P10#pos" [color=blue, fontcolor=blue, style=bold, minlen=1, shape=normal, pos="e,76,175 100,217 95,207 87,194 81,184"];
+	"mc1s1_chk0#chunk" -> "mc1s1_P38#pos" [color=blue, fontcolor=blue, style=bold, minlen=1, shape=normal, pos="e,142,175 118,217 123,207 131,194 137,184"];
+}

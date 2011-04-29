@@ -1,0 +1,11 @@
+digraph g {
+	node [label="\N"];
+	graph [bb="0,0,62,252"];
+	"mc1s1_t1#token84" [label=klmf, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="31,18", width="0.75", height="0.50"];
+	"mc1s1_W1#wordmc1s1_t1#token" [label=klmf, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="31,90", width="0.86", height="0.50"];
+	"mc1s1_P13#pos" [label=np, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="31,162", width="0.75", height="0.50"];
+	"mc1s1_chk0#chunk" [label=GN, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, arrowhead=doubleoctagon, pos="31,234", width="0.75", height="0.50"];
+	"mc1s1_W1#wordmc1s1_t1#token" -> "mc1s1_t1#token84" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="31,72 31,61 31,47 31,36"];
+	"mc1s1_P13#pos" -> "mc1s1_W1#wordmc1s1_t1#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="31,144 31,133 31,119 31,108"];
+	"mc1s1_chk0#chunk" -> "mc1s1_P13#pos" [color=blue, fontcolor=blue, style=bold, minlen=1, shape=normal, pos="e,31,180 31,216 31,208 31,199 31,190"];
+}
