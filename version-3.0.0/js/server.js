@@ -95,7 +95,7 @@ server	= http.createServer(function (req, res)
 			pathfile	= '/data/' + filename ;
 
 			//tester si le fichier pour cette requete existe deja
-			file	= path.join(process.cwd(), url.parse(root+pathfile+'.png').pathname);
+			file	= path.join(process.cwd(), url.parse(root+pathfile+'.gv').pathname);
 			path.exists(file, function(exists){
 
 				if(!exists){
@@ -110,10 +110,10 @@ server	= http.createServer(function (req, res)
 
 				}  else{
 					//s'il existe deja on renvoie le nom du fichier
-					console.log('  file"/data/'+filename+'.png" already exists!');
-					console.log('  Response to '+cli.ip+' "text"	: /data/'+filename+'.png');
+					//console.log('  file"/data/'+filename+'.gv" already exists!');
+					console.log('  Response to '+cli.ip+' "text"	: /data/'+filename+'.gv');
 					res.writeHead(200, {'Content-Type': 'text/plain'});
-					res.end('/data/'+filename+'.png');
+					res.end('/data/'+filename+'.gv');
 					clients.getItem(cli.ip).requests.removeItem(Request.query.T);
 					
 				}
@@ -185,13 +185,13 @@ function processQueue ()
 			var sentence	= clean.clean(req.request.query.sentence),
 			filename		= crypto.createHash('md5').update(sentence).digest("hex"),
 			pathfile		= '/data/' + filename;
-			maca.macaon(pathfile,root,sentence,req.result,clients.items [i],clients,req.request)		
+			maca.macaon(pathfile,root,sentence,req.result,clients.items [i])		
 		}
 	}
 	
 }
 
-setInterval(processQueue, 500);
+setInterval(processQueue, 300);
 
 console.log('  Server running at			: http://'+server.address().address+':'+server.address().port+'/');
 

@@ -1,17 +1,24 @@
 digraph g {
 	node [label="\N"];
-	graph [bb="0,0,192,252"];
-	"mc1s1_t1#token84" [label=ramadan, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="53,18", width="1.06", height="0.50"];
-	"mc1s1_W1#wordmc1s1_t1#token" [label=ramadan, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="53,90", width="1.47", height="0.50"];
-	"mc1s1_P10#pos" [label=det, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="69,162", width="0.75", height="0.50"];
-	"mc1s1_t3#token87" [label=hami, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="158,18", width="0.75", height="0.50"];
-	"mc1s1_W2#wordmc1s1_t3#token" [label=hami, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="158,90", width="0.94", height="0.50"];
-	"mc1s1_P38#pos" [label=np, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="149,162", width="0.75", height="0.50"];
-	"mc1s1_chk0#chunk" [label=GN, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, arrowhead=doubleoctagon, pos="109,234", width="0.75", height="0.50"];
-	"mc1s1_W1#wordmc1s1_t1#token" -> "mc1s1_t1#token84" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="53,72 53,61 53,47 53,36"];
-	"mc1s1_P10#pos" -> "mc1s1_W1#wordmc1s1_t1#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="65,146 63,135 60,120 57,108"];
-	"mc1s1_W2#wordmc1s1_t3#token" -> "mc1s1_t3#token87" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="158,72 158,61 158,47 158,36"];
-	"mc1s1_P38#pos" -> "mc1s1_W2#wordmc1s1_t3#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="151,145 153,134 154,119 156,108"];
-	"mc1s1_chk0#chunk" -> "mc1s1_P10#pos" [color=blue, fontcolor=blue, style=bold, minlen=1, shape=normal, pos="e,76,175 100,217 95,207 87,194 81,184"];
-	"mc1s1_chk0#chunk" -> "mc1s1_P38#pos" [color=blue, fontcolor=blue, style=bold, minlen=1, shape=normal, pos="e,142,175 118,217 123,207 131,194 137,184"];
+	graph [bb="0,0,426,180"];
+	"mc1s1_t1#token84" [label=kjdsjksd, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="48,18", width="0.97", height="0.50"];
+	"mc1s1_W1#wordmc1s1_t1#token" [label=kjdsjksd, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="48,90", width="1.33", height="0.50"];
+	"mc1s1_P11#pos" [label=etr, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="48,162", width="0.75", height="0.50"];
+	"mc1s1_t3#token87" [label=dskjhfjdfs, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="169,18", width="1.11", height="0.50"];
+	"mc1s1_W2#wordmc1s1_t3#token" [label=dskjhfjdfs, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="169,90", width="1.53", height="0.50"];
+	"mc1s1_P36#pos" [label=etr, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="169,162", width="0.75", height="0.50"];
+	"mc1s1_t5#token78" [label=dskjfdjkfd, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="298,18", width="1.11", height="0.50"];
+	"mc1s1_W3#wordmc1s1_t5#token" [label=dskjfdjkfd, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="298,90", width="1.56", height="0.50"];
+	"mc1s1_P61#pos" [label=etr, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="298,162", width="0.75", height="0.50"];
+	"mc1s1_t7#token16" [label=ksd, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="399,18", width="0.75", height="0.50"];
+	"mc1s1_W4#wordmc1s1_t7#token" [label=ksd, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="399,90", width="0.75", height="0.50"];
+	"mc1s1_P86#pos" [label=etr, shape=diamond, fillcolor=lightblue2, fontcolor=blue, color=blue, style=filled, pos="399,162", width="0.75", height="0.50"];
+	"mc1s1_W1#wordmc1s1_t1#token" -> "mc1s1_t1#token84" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="48,72 48,61 48,47 48,36"];
+	"mc1s1_P11#pos" -> "mc1s1_W1#wordmc1s1_t1#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="48,144 48,133 48,119 48,108"];
+	"mc1s1_W2#wordmc1s1_t3#token" -> "mc1s1_t3#token87" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="169,72 169,61 169,47 169,36"];
+	"mc1s1_P36#pos" -> "mc1s1_W2#wordmc1s1_t3#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="169,144 169,133 169,119 169,108"];
+	"mc1s1_W3#wordmc1s1_t5#token" -> "mc1s1_t5#token78" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="298,72 298,61 298,47 298,36"];
+	"mc1s1_P61#pos" -> "mc1s1_W3#wordmc1s1_t5#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="298,144 298,133 298,119 298,108"];
+	"mc1s1_W4#wordmc1s1_t7#token" -> "mc1s1_t7#token16" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="399,72 399,61 399,47 399,36"];
+	"mc1s1_P86#pos" -> "mc1s1_W4#wordmc1s1_t7#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="399,144 399,133 399,119 399,108"];
 }

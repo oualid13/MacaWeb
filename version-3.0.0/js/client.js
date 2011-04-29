@@ -1,14 +1,32 @@
+var canviz = new Canviz('graph_container');
+
+/*Ajax.Responders.register({
+	onCreate: function() {
+		$('busy').show();
+	},
+	onComplete: function() {
+		if (0 == Ajax.activeRequestCount) {
+			$('busy').hide();
+		}
+	}
+});
+*/
+var previous;
 var request	= function ()
 {
+		
 	if (input.value == '')
-		return;	
+		return;
 	var xhr		= getXMLHttpRequest(),	
 	sentence	= encodeURIComponent(input.value),
 	date		= new Date(),
 	Time		= date.getTime()
 	doc			= document.location.href.split("/");
 	
-	xhr.open("GET", doc[0]+"/?app=Maca&sentence="+sentence+"&T="+Time, true);
+	if ((typeof(previous)=='undefined')||(sentence != previous)){
+		xhr.open("GET", doc[0]+"/?app=Maca&sentence="+sentence+"&T="+Time, true);
+		previous	= sentence;
+	}
 
 	xhr.onreadystatechange = function() 
 	{
@@ -19,13 +37,10 @@ var request	= function ()
 				
 				/*var result			= document.getElementById("output");
     			result.innerHTML	= xhr.responseText;*/
-				var img		= document.getElementById("image");
-				/*if(xhr.responseText=='none')
-					$('img').removeAttr('src');
-				else*/
-					img.src=xhr.responseText;
+				var graph		= document.getElementById("graph_container");
+				canviz.load(xhr.responseText);
 				
-			} else if(xhr.status == 500 )
+			}else if(xhr.status == 500 )
 					alert(xhr.responseText);
 		}
 	};

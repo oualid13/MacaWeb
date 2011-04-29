@@ -10,7 +10,8 @@
 	maca		= require('./maca/maca.js'),
 	clean		= require ('./clean.js'),
 	hash		= require ('./hash.js'),
-	port		= '8132',
+	port		= '8000',
+	host		= '127.0.0.1',
 	root		= '..',
 	clients		= new  hash.Hash(util),
 	server;
@@ -109,7 +110,6 @@ server	= http.createServer(function (req, res)
 					
 				}
 			});
-			clients.getItem(cli.ip).requests.removeItem(Request.query.T);
 		} else{
 
 		}

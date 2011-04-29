@@ -23,7 +23,7 @@ var request	= function ()
 	Time		= date.getTime()
 	doc			= document.location.href.split("/");
 	
-	xhr.open("GET", doc[0]+"/?app=Maca&sentence="+sentence+"&T="+Time, false);
+	xhr.open("GET", doc[0]+"/?app=Maca&sentence="+sentence+"&T="+Time, true);
 
 	xhr.onreadystatechange = function() 
 	{
