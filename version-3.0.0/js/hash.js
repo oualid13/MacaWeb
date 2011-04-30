@@ -1,5 +1,4 @@
-
-exports.Hash = function (util)
+exports.Hash = function ()
 {
 	this.length = 0;
 	this.items = new Array();
@@ -33,8 +32,6 @@ exports.Hash = function (util)
 			if (typeof(this.items[in_key]) == 'undefined') {
 				this.length++;
 				this.items[in_key] = in_value;
-				////console.log ('  key			: '+in_key);
-				////console.log ('  value		: '+util.inspect(in_value, true, null));
 			}
 			
 		}

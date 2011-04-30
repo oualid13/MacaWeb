@@ -13,7 +13,8 @@
 	port		= '8000',
 	host		= '127.0.0.1',
 	root		= '..',
-	clients		= new  hash.Hash(util),
+	clients		= new hash.Hash(),
+	blacklist	= new hash.Hash(),
 	server;
 
 //recuperer les exceptions pour que le serveur puisse continuer a tourner
@@ -39,7 +40,7 @@ function Client (ip)
 {
 	this.ip			= ip;
 	this.req_number	= 0;
-	this.requests	= new hash.Hash(util);
+	this.requests	= new hash.Hash();
 }
 
 function Requeste (req,res)
@@ -53,6 +54,11 @@ server	= http.createServer(function (req, res)
 {
 	//le serveur a recu une requete "req" et va renvoyer le resultat "res"
 
+	if(blacklist.hasItem(res.socket.remoteAddress)){
+		res.destroy();
+		return;	
+	}
+	
 	//on ajoute le client
 	var cli	= new Client (util.inspect(res.socket.remoteAddress, true, null));
 	
@@ -66,7 +72,9 @@ server	= http.createServer(function (req, res)
 	console.log('  Client '+cli.ip);
 	console.log('  	request number			: '+clients.getItem (cli.ip).req_number);
 	
-	if(clients.getItem (cli.ip).req_number>2000){
+	if(clients.getItem (cli.ip).req_number>40){
+		blacklist.setItem (cli.ip,cli);
+		res.writeHead(200, {'Content-Type': 'text/plain'});
 		res.destroy();
 		return;
 	}
@@ -74,8 +82,8 @@ server	= http.createServer(function (req, res)
 	//si la requete est trop longue on la refuse
 	if(Request.search.length>130){
 		res.writeHead(500, {"Content-Type": "text/plain"});
-		res.write("Requete trés longue\n");
-		res.end();
+		//res.write("Requete trés longue\n");
+		res.destroy();
 
 		console.log('  Response				: Requete trés longue');
 		return;
@@ -177,8 +185,17 @@ function processQueue ()
 				if(typeof(req) =='undefined')
 					req	= clients.items [i].requests.removeItem(j);
 				else 
-					if(Math.max( j,req.request.query.T) == j)
+					if(Math.max( j,req.request.query.T) == j){
+						console.log('  	aborting   "'+req.request.query.T+'" ...');
+						res.writeHead(200, {'Content-Type': 'text/plain'});
+						req.result.end();
 						req	= clients.items [i].requests.removeItem(j);		
+					}else{
+						console.log('  	aborting "'+j+'" ...');
+						res.writeHead(200, {'Content-Type': 'text/plain'});
+						clients.items [i].requests.items[j].result.end();
+					}
+					
 			}
 			console.log('  	processing "'+req.request.query.T+'" ...');
 			
@@ -190,8 +207,13 @@ function processQueue ()
 	}
 	
 }
-
-setInterval(processQueue, 300);
+function two_h_pass (){
+	blacklist.clear();
+	for(i in clients.items)
+		clients.items [i].req_number = 0;
+}
+setInterval(processQueue, 100);
+setInterval(two_h_pass, 120000);
 
 console.log('  Server running at			: http://'+server.address().address+':'+server.address().port+'/');
 

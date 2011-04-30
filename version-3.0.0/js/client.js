@@ -11,7 +11,7 @@ var canviz = new Canviz('graph_container');
 	}
 });
 */
-var previous;
+//var previous;
 var request	= function ()
 {
 		
@@ -23,10 +23,10 @@ var request	= function ()
 	Time		= date.getTime()
 	doc			= document.location.href.split("/");
 	
-	if ((typeof(previous)=='undefined')||(sentence != previous)){
+	//if ((typeof(previous)=='undefined')||(sentence != previous)){
 		xhr.open("GET", doc[0]+"/?app=Maca&sentence="+sentence+"&T="+Time, true);
-		previous	= sentence;
-	}
+		//previous	= sentence;
+//	}
 
 	xhr.onreadystatechange = function() 
 	{

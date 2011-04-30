@@ -27,7 +27,7 @@ exports.macaviz	= function (filename,root,res,cli)
 		console.log('  Execution Macaviz');//\n						stdout		: '+stdout+'\n						stderr		: '+stderr+'\n						error		: '+error);
 		var child2 = exec('dot -Txdot -o'+root+filename+'.gv '+root+filename+'.dot',function (error, stdout, stderr) {
 			//renvoyer le nom de l'image generée par macaviz
-			console.log('  Response to '+cli.ip+' "text"	: '+filename+'.png');
+			console.log('  Response to '+cli.ip+' "text"	: '+filename+'.gv');
 			res.writeHead(200, {'Content-Type': 'text/plain'});
 			res.end(filename+'.gv');
 		
