@@ -187,13 +187,13 @@ function processQueue ()
 				else 
 					if(Math.max( j,req.request.query.T) == j){
 						console.log('  	aborting   "'+req.request.query.T+'" ...');
-						res.writeHead(200, {'Content-Type': 'text/plain'});
-						req.result.end();
+						req.result.writeHead(200);
+						req.result.end('');
 						req	= clients.items [i].requests.removeItem(j);		
 					}else{
 						console.log('  	aborting "'+j+'" ...');
-						res.writeHead(200, {'Content-Type': 'text/plain'});
-						clients.items [i].requests.items[j].result.end();
+						clients.items [i].requests.items[j].result.writeHead(200);
+						clients.items [i].requests.items[j].result.end('');
 					}
 					
 			}
@@ -212,8 +212,7 @@ function two_h_pass (){
 	for(i in clients.items)
 		clients.items [i].req_number = 0;
 }
-setInterval(processQueue, 100);
+setInterval(processQueue, 300);
 setInterval(two_h_pass, 120000);
 
 console.log('  Server running at			: http://'+server.address().address+':'+server.address().port+'/');
-

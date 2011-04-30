@@ -23,10 +23,10 @@ var request	= function ()
 	Time		= date.getTime()
 	doc			= document.location.href.split("/");
 	
-	//if ((typeof(previous)=='undefined')||(sentence != previous)){
+	if ((typeof(previous)=='undefined')||(sentence != previous)){
 		xhr.open("GET", doc[0]+"/?app=Maca&sentence="+sentence+"&T="+Time, true);
-		//previous	= sentence;
-//	}
+		previous	= sentence;
+	}
 
 	xhr.onreadystatechange = function() 
 	{
@@ -38,7 +38,8 @@ var request	= function ()
 				/*var result			= document.getElementById("output");
     			result.innerHTML	= xhr.responseText;*/
 				var graph		= document.getElementById("graph_container");
-				canviz.load(xhr.responseText);
+				if(xhr.responseText != '')
+					canviz.load(xhr.responseText);
 				
 			}else if(xhr.status == 500 )
 					alert(xhr.responseText);
