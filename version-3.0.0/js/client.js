@@ -1,6 +1,6 @@
 var canviz = new Canviz('graph_container');
 
-/*Ajax.Responders.register({
+Ajax.Responders.register({
 	onCreate: function() {
 		$('busy').show();
 	},
@@ -10,18 +10,33 @@ var canviz = new Canviz('graph_container');
 		}
 	}
 });
-*/
-//var previous;
+
+var previous;
+
+function replace (sentence,org_char,cib_char){
+	
+	var tab	= sentence.split(org_char);
+	sentence	= '';
+
+	for(var i=0,len=tab.length;i< len-1;i++)
+		sentence	+= tab[i] + cib_char ;
+	sentence	+= tab [tab.length-1];
+
+	return sentence;
+	
+} 
+
 var request	= function ()
 {
 		
 	if (input.value == '')
 		return;
-	var xhr		= getXMLHttpRequest(),	
-	sentence	= encodeURIComponent(input.value),
+	var xhr		= getXMLHttpRequest(),
+	sentence	= input.value,
 	date		= new Date(),
 	Time		= date.getTime()
 	doc			= document.location.href.split("/");
+	sentence	= encodeURIComponent(replace (sentence,"'","\'"));
 	
 	if ((typeof(previous)=='undefined')||(sentence != previous)){
 		xhr.open("GET", doc[0]+"/?app=Maca&sentence="+sentence+"&T="+Time, true);

@@ -2,6 +2,7 @@ exports.clean	= function (sentence)
 {
 	sentence	= cleanbychar(sentence,'|');
 	sentence	= replace(sentence,';',',');
+	sentence	= replace(sentence,"'","\\'");
 	sentence	= cleanbychar(sentence,'{');
 	sentence	= cleanbychar(sentence,'}');
 

@@ -1,18 +1,18 @@
 //inclure les modules necessaire
 
-	var util	= require ('util'),
+	var root	= '..',
+	util		= require ('util'),
 	http		= require ('http'),
 	sys			= require ('sys'),
 	url			= require ('url'),
 	path		= require ('path'),
 	fs			= require ('fs'),
 	crypto		= require ('crypto'),
-	maca		= require ('./maca/maca.js'),
-	clean		= require ('./clean.js'),
-	hash		= require ('./hash.js'),
+	maca		= require (root+'/js/maca.js'),
+	clean		= require (root+'/js/clean.js'),
+	hash		= require (root+'/js/hash.js'),
 	port		= '8000',
 	host		= '127.0.0.1',
-	root		= '..',
 	clients		= new hash.Hash(),
 	blacklist	= new hash.Hash(),
 	server;
@@ -72,7 +72,7 @@ server	= http.createServer(function (req, res)
 	console.log('  Client '+cli.ip);
 	console.log('  	request number			: '+clients.getItem (cli.ip).req_number);
 	
-	if(clients.getItem (cli.ip).req_number>40){
+	if(clients.getItem (cli.ip).req_number>400){
 		blacklist.setItem (cli.ip,cli);
 		res.writeHead(200, {'Content-Type': 'text/plain'});
 		res.destroy();
@@ -178,22 +178,24 @@ function processQueue ()
 {
 	
 	for(i in clients.items){
+		console.log('  Client :'+clients.items [i].requests.length);
 		if(clients.items [i].requests.length != 0){
-			console.log('  Execution Macaon');
+			console.log('  Execution Macaon ');
 			var req;
 			for(j in clients.items [i].requests.items){
-				if(typeof(req) =='undefined')
+				if(typeof(req) =='undefined'){
 					req	= clients.items [i].requests.removeItem(j);
-				else 
+				}else
 					if(Math.max( j,req.request.query.T) == j){
 						console.log('  	aborting   "'+req.request.query.T+'" ...');
 						req.result.writeHead(200);
 						req.result.end('');
-						req	= clients.items [i].requests.removeItem(j);		
+						req	= clients.items [i].requests.removeItem(j);
 					}else{
 						console.log('  	aborting "'+j+'" ...');
 						clients.items [i].requests.items[j].result.writeHead(200);
 						clients.items [i].requests.items[j].result.end('');
+						clients.items [i].requests.removeItem(j);
 					}
 					
 			}
@@ -202,17 +204,22 @@ function processQueue ()
 			var sentence	= clean.clean(req.request.query.sentence),
 			filename		= crypto.createHash('md5').update(sentence).digest("hex"),
 			pathfile		= '/data/' + filename;
-			maca.macaon(pathfile,root,sentence,req.result,clients.items [i])		
+			maca.macaon(pathfile,root,sentence,req.result,clients.items [i]);
 		}
 	}
-	
 }
+
 function two_h_pass (){
 	blacklist.clear();
-	for(i in clients.items)
+	for(i in clients.items){
 		clients.items [i].req_number = 0;
+		if(clients.items [i].requests.length == 0){
+			clients.removeItem(i);
+		}
+	}
 }
+
 setInterval(processQueue, 300);
-setInterval(two_h_pass, 120000);
+setInterval(two_h_pass, 6000);
 
 console.log('  Server running at			: http://'+server.address().address+':'+server.address().port+'/');

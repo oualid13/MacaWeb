@@ -8,6 +8,20 @@ body
 	
 	
 }
+#busy {
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	top: 50%;
+	width: 10em;
+	height: 2em;
+	margin: -1em 0 0 -5em;
+	line-height: 2em;
+	text-align: center;
+	background: #333;
+	color: #fff;
+	opacity: 0.95;
+}
 #form
 {
 	margin-left:40px;
@@ -19,6 +33,10 @@ body
 	background-repeat: no-repeat;
 	padding: 70px 200px; 
 	background-repeat: no-repeat;
+}
+#graph_container {
+	background: #fff;
+	margin: 0 auto;
 }
 
 p#footer
