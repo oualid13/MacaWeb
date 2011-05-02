@@ -174,11 +174,12 @@ server	= http.createServer(function (req, res)
 
 server.listen(parseInt(port),host);
 
+//executer pour chaque client la derniére requête effectué
 function processQueue ()
 {
 	
 	for(i in clients.items){
-		console.log('  Client :'+clients.items [i].requests.length);
+		console.log('  Client :'+i);
 		if(clients.items [i].requests.length != 0){
 			console.log('  Execution Macaon ');
 			var req;
@@ -187,19 +188,19 @@ function processQueue ()
 					req	= clients.items [i].requests.removeItem(j);
 				}else
 					if(Math.max( j,req.request.query.T) == j){
-						console.log('  	aborting   "'+req.request.query.T+'" ...');
+						console.log('  	aborting	"'+req.request.query.T+'" ...');
 						req.result.writeHead(200);
 						req.result.end('');
 						req	= clients.items [i].requests.removeItem(j);
 					}else{
-						console.log('  	aborting "'+j+'" ...');
+						console.log('  	aborting	"'+j+'" ...');
 						clients.items [i].requests.items[j].result.writeHead(200);
 						clients.items [i].requests.items[j].result.end('');
 						clients.items [i].requests.removeItem(j);
 					}
 					
 			}
-			console.log('  	processing "'+req.request.query.T+'" ...');
+			console.log('  	processing	"'+req.request.query.T+'" ...');
 			
 			var sentence	= clean.clean(req.request.query.sentence),
 			filename		= crypto.createHash('md5').update(sentence).digest("hex"),
@@ -209,7 +210,8 @@ function processQueue ()
 	}
 }
 
-function two_h_pass (){
+
+function timeout (){
 	blacklist.clear();
 	for(i in clients.items){
 		clients.items [i].req_number = 0;
@@ -220,6 +222,6 @@ function two_h_pass (){
 }
 
 setInterval(processQueue, 300);
-setInterval(two_h_pass, 6000);
+setInterval(timeout, 15*60*1000);
 
 console.log('  Server running at			: http://'+server.address().address+':'+server.address().port+'/');
