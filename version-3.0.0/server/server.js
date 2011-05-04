@@ -8,9 +8,9 @@
 	path		= require ('path'),
 	fs			= require ('fs'),
 	crypto		= require ('crypto'),
-	maca		= require (root+'/js/maca.js'),
-	clean		= require (root+'/js/clean.js'),
-	hash		= require (root+'/js/hash.js'),
+	maca		= require (root+'/server/maca.js'),
+	clean		= require (root+'/server/clean.js'),
+	hash		= require (root+'/server/hash.js'),
 	port		= '8000',
 	host		= '127.0.0.1',
 	clients		= new hash.Hash(),
@@ -100,7 +100,7 @@ server	= http.createServer(function (req, res)
 			console.log('  	Request "Macaon"		: '+req.url);
 		
 			filename	= crypto.createHash('md5').update(sentence).digest("hex");
-			pathfile	= '/data/' + filename ;
+			pathfile	= '/client/data/' + filename ;
 
 			//tester si le fichier pour cette requete existe deja
 			file	= path.join(process.cwd(), url.parse(root+pathfile+'.gv').pathname);
@@ -139,7 +139,7 @@ server	= http.createServer(function (req, res)
 		if(Request.href=='/')
 			Request.pathname='/MacaWeb.html';
 
-		uri	= url.parse(root+Request.pathname).pathname;
+		uri	= url.parse(root+'/client'+Request.pathname).pathname;
 		console.log('  	Request  "file"			: '+Request.pathname);
 		sys.puts('\n');
 		
@@ -148,8 +148,8 @@ server	= http.createServer(function (req, res)
 
 			if(!exists){
 				//si le fichier demandé n'existe pas sur le serveur on renvoie la page d'erreur
-				req.url	= '/error.html';
-				uri	= url.parse(root+req.url).pathname;
+				req.url	= '/client/error.html';
+				uri	= url.parse(root+'/client'+req.url).pathname;
 				file	= path.join(process.cwd(), uri);
 			}
 

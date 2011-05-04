@@ -1,0 +1,26 @@
+digraph g {
+	graph [bb="0,0,482,180"];
+	node [label="\N"];
+	graph [_draw_="c 5 -white C 5 -white P 4 0 0 0 180 482 180 482 0 ",
+		xdotversion="1.2"];
+	"mc1s1_t2#token84" [label=dskf, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="30,18", width="0.75", height="0.50", _ldraw_="F 14.000000 11 -Times-Roman c 4 -blue T 30 13 0 28 4 -dskf "];
+	"mc1s1_W1#wordmc1s1_t2#token" [label=dskf, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, pos="30,90", width="0.83", height="0.50", color=blue, style=filled, _draw_="S 6 -filled c 4 -blue C 10 -lightblue2 E 30 90 30 18 ", _ldraw_="F 14.000000 11 -Times-Roman c 4 -blue T 30 85 0 28 4 -dskf "];
+	"mc1s1_P11#pos" [label=etr, shape=diamond, fillcolor=lightblue2, fontcolor=blue, pos="30,162", width="0.75", height="0.50", color=blue, style=filled, _draw_="S 6 -filled c 4 -blue C 10 -lightblue2 P 4 30 180 3 162 30 144 57 162 ", _ldraw_="F 14.000000 11 -Times-Roman c 4 -blue T 30 157 0 20 3 -etr "];
+	"mc1s1_t4#token87" [label=ds, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="105,18", width="0.75", height="0.50", _ldraw_="F 14.000000 11 -Times-Roman c 4 -blue T 105 13 0 15 2 -ds "];
+	"mc1s1_W2#wordmc1s1_t4#token" [label=ds, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, pos="105,90", width="0.75", height="0.50", color=blue, style=filled, _draw_="S 6 -filled c 4 -blue C 10 -lightblue2 E 105 90 27 18 ", _ldraw_="F 14.000000 11 -Times-Roman c 4 -blue T 105 85 0 15 2 -ds "];
+	"mc1s1_P36#pos" [label=etr, shape=diamond, fillcolor=lightblue2, fontcolor=blue, pos="105,162", width="0.75", height="0.50", color=blue, style=filled, _draw_="S 6 -filled c 4 -blue C 10 -lightblue2 P 4 105 180 78 162 105 144 132 162 ", _ldraw_="F 14.000000 11 -Times-Roman c 4 -blue T 105 157 0 20 3 -etr "];
+	"mc1s1_t6#token78" [label=fhsdjkf, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="192,18", width="0.83", height="0.50", _ldraw_="F 14.000000 11 -Times-Roman c 4 -blue T 192 13 0 45 7 -fhsdjkf "];
+	"mc1s1_W3#wordmc1s1_t6#token" [label=fhsdjkf, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, pos="192,90", width="1.17", height="0.50", color=blue, style=filled, _draw_="S 6 -filled c 4 -blue C 10 -lightblue2 E 192 90 42 18 ", _ldraw_="F 14.000000 11 -Times-Roman c 4 -blue T 192 85 0 45 7 -fhsdjkf "];
+	"mc1s1_P61#pos" [label=etr, shape=diamond, fillcolor=lightblue2, fontcolor=blue, pos="192,162", width="0.75", height="0.50", color=blue, style=filled, _draw_="S 6 -filled c 4 -blue C 10 -lightblue2 P 4 192 180 165 162 192 144 219 162 ", _ldraw_="F 14.000000 11 -Times-Roman c 4 -blue T 192 157 0 20 3 -etr "];
+	"mc1s1_t8#token16" [label=dkfdsjfkdkjhfdshgldsfk, shape=plaintext, fillcolor=lightblue2, fontcolor=blue, pos="367,18", width="2.31", height="0.50", _ldraw_="F 14.000000 11 -Times-Roman c 4 -blue T 367 13 0 150 22 -dkfdsjfkdkjhfdshgldsfk "];
+	"mc1s1_W4#wordmc1s1_t8#token" [label=dkfdsjfkdkjhfdshgldsfk, shape=ellipse, fillcolor=lightblue2, fontcolor=blue, pos="367,90", width="3.19", height="0.50", color=blue, style=filled, _draw_="S 6 -filled c 4 -blue C 10 -lightblue2 E 367 90 115 18 ", _ldraw_="F 14.000000 11 -Times-Roman c 4 -blue T 367 85 0 150 22 -dkfdsjfkdkjhfdshgldsfk "];
+	"mc1s1_P86#pos" [label=etr, shape=diamond, fillcolor=lightblue2, fontcolor=blue, pos="367,162", width="0.75", height="0.50", color=blue, style=filled, _draw_="S 6 -filled c 4 -blue C 10 -lightblue2 P 4 367 180 340 162 367 144 394 162 ", _ldraw_="F 14.000000 11 -Times-Roman c 4 -blue T 367 157 0 20 3 -etr "];
+	"mc1s1_W1#wordmc1s1_t2#token" -> "mc1s1_t2#token84" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="30,72 30,61 30,47 30,36", _draw_="S 4 -bold c 4 -blue B 4 30 72 30 61 30 47 30 36 "];
+	"mc1s1_P11#pos" -> "mc1s1_W1#wordmc1s1_t2#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="30,144 30,133 30,119 30,108", _draw_="S 4 -bold c 4 -blue B 4 30 144 30 133 30 119 30 108 "];
+	"mc1s1_W2#wordmc1s1_t4#token" -> "mc1s1_t4#token87" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="105,72 105,61 105,47 105,36", _draw_="S 4 -bold c 4 -blue B 4 105 72 105 61 105 47 105 36 "];
+	"mc1s1_P36#pos" -> "mc1s1_W2#wordmc1s1_t4#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="105,144 105,133 105,119 105,108", _draw_="S 4 -bold c 4 -blue B 4 105 144 105 133 105 119 105 108 "];
+	"mc1s1_W3#wordmc1s1_t6#token" -> "mc1s1_t6#token78" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="192,72 192,61 192,47 192,36", _draw_="S 4 -bold c 4 -blue B 4 192 72 192 61 192 47 192 36 "];
+	"mc1s1_P61#pos" -> "mc1s1_W3#wordmc1s1_t6#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="192,144 192,133 192,119 192,108", _draw_="S 4 -bold c 4 -blue B 4 192 144 192 133 192 119 192 108 "];
+	"mc1s1_W4#wordmc1s1_t8#token" -> "mc1s1_t8#token16" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="367,72 367,61 367,47 367,36", _draw_="S 4 -bold c 4 -blue B 4 367 72 367 61 367 47 367 36 "];
+	"mc1s1_P86#pos" -> "mc1s1_W4#wordmc1s1_t8#token" [arrowhead=none, color=blue, fontcolor=blue, style=bold, minlen=1, pos="367,144 367,133 367,119 367,108", _draw_="S 4 -bold c 4 -blue B 4 367 144 367 133 367 119 367 108 "];
+}
