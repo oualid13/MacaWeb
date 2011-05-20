@@ -1,0 +1,49 @@
+body 
+{
+	/*position:absolute;*/
+	padding: 50px 250px; 
+	color: #F0E39E;
+	background: #ffffff;
+	margin-left:80px;
+	
+	
+}
+#busy {
+	position: fixed;
+	z-index: 1;
+	left: 50%;
+	top: 50%;
+	width: 10em;
+	height: 2em;
+	margin: -1em 0 0 -5em;
+	line-height: 2em;
+	text-align: center;
+	background: #333;
+	color: #fff;
+	opacity: 0.95;
+}
+#form
+{
+	margin-left:40px;
+}
+#img
+{
+
+	background-image: url(../img/BerkeleyParser.png);
+	background-repeat: no-repeat;
+	padding: 70px 200px; 
+	background-repeat: no-repeat;
+}
+#graph_container {
+	background: #fff;
+	margin: 0 auto;
+}
+
+p#footer
+{
+	
+	line-height: 30px ;
+	margin-left:220px;
+	color: #8a0 ;
+	font-family: "Comic Sans MS", "Trebuchet MS", Times, "Times New Roman", serif;
+}
