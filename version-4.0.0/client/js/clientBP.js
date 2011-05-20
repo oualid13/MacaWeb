@@ -1,4 +1,3 @@
-/*var canviz = new Canviz('graph_container');
 
 Ajax.Responders.register({
 	onCreate: function() {
@@ -10,7 +9,7 @@ Ajax.Responders.register({
 		}
 	}
 });
-*/
+
 var previous;
 
 function replace (sentence,org_char,cib_char){
@@ -52,7 +51,7 @@ var request	= function ()
 				
 				/*var result			= document.getElementById("output");
     			result.innerHTML	= xhr.responseText;*/
-				var graph		= document.getElementById("graph_container");
+			
 				if(xhr.responseText != '')
 					draw_parse_tree('target', xhr.responseText);
 				
@@ -64,5 +63,5 @@ var request	= function ()
 	xhr.send(null);	
 };
 
-var	input	= document.getElementById("input");
+var	input	= $("input");
 input.addEventListener('keyup', request , false);

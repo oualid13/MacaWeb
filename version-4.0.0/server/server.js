@@ -149,7 +149,7 @@ server	= http.createServer(function (req, res) {
 		if(Request.href =='/maca')
 			Request.pathname='/MacaWeb.html';
 		else if(Request.href == '/BrklyPrsr')
-				Request.pathname='/BerkeleyParser/draw-parse-tree.html';
+				Request.pathname='/draw-parse-tree.html';
 
 		uri	= url.parse(root+'/client'+Request.pathname).pathname;
 		console.log('  	Request  "file"			: '+Request.pathname);

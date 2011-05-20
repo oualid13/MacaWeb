@@ -1,4 +1,5 @@
-var canviz = new Canviz('graph_container');
+var canviz = new Canviz('graph_container'),
+	previous;
 
 Ajax.Responders.register({
 	onCreate: function() {
@@ -10,8 +11,6 @@ Ajax.Responders.register({
 		}
 	}
 });
-
-var previous;
 
 function replace (sentence,org_char,cib_char){
 	
@@ -50,9 +49,6 @@ var request	= function ()
 			if(xhr.status == 200 || xhr.status == 0)
 			{
 				
-				/*var result			= document.getElementById("output");
-    			result.innerHTML	= xhr.responseText;*/
-				var graph		= document.getElementById("graph_container");
 				if(xhr.responseText != '')
 					canviz.load(xhr.responseText);
 				
@@ -64,5 +60,5 @@ var request	= function ()
 	xhr.send(null);	
 };
 
-var	input	= document.getElementById("input");
+var	input	= $("input");
 input.addEventListener('keyup', request , false);
