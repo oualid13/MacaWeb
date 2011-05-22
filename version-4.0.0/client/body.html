@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<link rel="stylesheet" media="screen" type="text/css" title="Style" href="css/style.css" />
+		<style type="text/css">
+           #form{
+				padding: 5px 325px; 
+			}
+       </style>
+	</head>
+	<body>
+		<div id="form">
+			<form id="myForm">
+				<p>
+					<textarea name="input" id="input" rows="4" cols="60" ></textarea><br>
+				</p>
+			</form>
+			<p><div id="output" ></div></p>
+		</div>
+		<div id="graph_container"></div>
+		<div id="debug_output"></div>
+		<div id="busy" style="display:none">Loading...</div>
+		<script type="text/javascript" src="js/oXHR.js"></script>
+		<!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="canviz-ie6.css" /><![endif]-->
+		<!--[if IE]><script type="text/javascript" src="excanvas/excanvas.js"></script><![endif]-->
+		<script type="text/javascript" src="js/canviz/prototype/prototype.js"></script>
+		<script type="text/javascript" src="js/canviz/path/path.js"></script>
+		<script type="text/javascript" src="js/canviz/canviz.js"></script>
+		<script type="text/javascript" src="js/canviz/x11colors.js"></script>
+		<script type="text/javascript" src="js/client.js"></script>	
+	</body>
+</html>

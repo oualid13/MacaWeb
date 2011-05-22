@@ -25,8 +25,7 @@ function replace (sentence,org_char,cib_char){
 	
 } 
 
-var request	= function ()
-{
+var request	= function (){
 		
 	if (input.value == '')
 		return;
@@ -42,16 +41,9 @@ var request	= function ()
 		previous	= sentence;
 	}
 
-	xhr.onreadystatechange = function() 
-	{
-		if (xhr.readyState == 4 )
-		{
-			if(xhr.status == 200 || xhr.status == 0)
-			{
-				
-				/*var result			= document.getElementById("output");
-    			result.innerHTML	= xhr.responseText;*/
-			
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 ){
+			if(xhr.status == 200 || xhr.status == 0){
 				if(xhr.responseText != '')
 					draw_parse_tree('target', xhr.responseText);
 				
@@ -60,7 +52,7 @@ var request	= function ()
 		}
 	};
 
-	xhr.send(null);	
+	xhr.send(null);
 };
 
 var	input	= $("input");

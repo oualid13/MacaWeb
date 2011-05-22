@@ -42,12 +42,9 @@ var request	= function ()
 		previous	= sentence;
 	}
 
-	xhr.onreadystatechange = function() 
-	{
-		if (xhr.readyState == 4 )
-		{
-			if(xhr.status == 200 || xhr.status == 0)
-			{
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState == 4 ){
+			if(xhr.status == 200 || xhr.status == 0){
 				
 				if(xhr.responseText != '')
 					canviz.load(xhr.responseText);
