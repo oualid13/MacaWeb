@@ -17,9 +17,10 @@
 	host			= '127.0.0.1',
 	clients			= new hash.Hash(),
 	blacklist		= new hash.Hash(),
+	text		= 'release:',
 	server;
 
-//recuperer les exceptions pour que le serveur puisse continuer a tourner
+//recuperer les exceptions pour que le serveur ne crache pas
 process.on('uncaughtException', function (err) {
 	console.log('  Caught exception	: ' + err);
 });
@@ -30,7 +31,7 @@ console.log = function(text){
     sys.puts(Date() + " " + text);
 }
 
-//afficher un objet
+//afficher un objet Json
 function log_obj(obj){
 
 	for (var i in obj)
@@ -58,6 +59,7 @@ function Requeste (req,res){
 server	= http.createServer(function (req, res) {
 	//le serveur a recu une requete "req" et va renvoyer le resultat "res"
 
+	//si le client est dans la liste noir on l'ignore
 	if(blacklist.hasItem(res.socket.remoteAddress)){
 		res.destroy();
 		return;	
@@ -65,7 +67,6 @@ server	= http.createServer(function (req, res) {
 	
 	//on ajoute le client
 	var cli	= new Client (util.inspect(res.socket.remoteAddress, true, null));
-	
 	clients.setItem (cli.ip,cli);
 	clients.getItem (cli.ip).req_number++;
 
@@ -76,19 +77,20 @@ server	= http.createServer(function (req, res) {
 	console.log('  Client '+cli.ip);
 	console.log('  	request number			: '+clients.getItem (cli.ip).req_number);
 	
+	/*pénaliser les client qui ont effectué 400 requetes par 15 minutes
+	  en les ajoutant dans une liste noir
+	*/
 	if(clients.getItem (cli.ip).req_number>400){
 		blacklist.setItem (cli.ip,cli);
 		res.writeHead(200, {'Content-Type': 'text/plain'});
-		res.destroy();
+		res.end('text:vous avez effectué un grand nombre de requêtes, veuillez attendre quelques minutes');
 		return;
 	}
 		
 	//si la requete est trop longue on la refuse
 	if(Request.search.length>130){
-		res.writeHead(500, {"Content-Type": "text/plain"});
-		//res.write("Requete trés longue\n");
-		res.destroy();
-
+		res.writeHead(200, {"Content-Type": "text/plain"});
+		res.end("text:Requete trés longue\n");
 		console.log('  Response				: Requete trés longue');
 		return;
 	}
@@ -101,6 +103,7 @@ server	= http.createServer(function (req, res) {
 		if( Request.query.app == 'Maca' ){
 
 			var sentence	= clean.clean(Request.query.sentence);
+			//console.log('  	Request "Macaon"		: '+Request.query.sentence);
 			console.log('  	Request "Macaon"		: '+req.url);
 		
 			filename	= crypto.createHash('md5').update(sentence).digest("hex");
@@ -111,10 +114,8 @@ server	= http.createServer(function (req, res) {
 			path.exists(file, function(exists){
 
 				if(!exists){
-					//s'il n'existe pas on le genére avec le macaon
-					//maca.macaon(pathfile,root,sentence,res,cli,clients,Request);
+					//si le fichier n'existe pas on ajoute la requete dans une file d'attente
 					
-					//ajouter la requete au client
 					clients.getItem(cli.ip).requests.setItem(Request.query.T,new Requeste(Request,res));
 					console.log(' 	Requests 			: ');
 					log_obj(clients.getItem(cli.ip).requests.items);
@@ -125,7 +126,7 @@ server	= http.createServer(function (req, res) {
 					//console.log('  file"/data/'+filename+'.gv" already exists!');
 					console.log('  Response to '+cli.ip+' "text"	: /data/'+filename+'.gv');
 					res.writeHead(200, {'Content-Type': 'text/plain'});
-					res.end('/data/'+filename+'.gv');
+					res.end(text+'/data/'+filename+'.gv');
 					clients.getItem(cli.ip).requests.removeItem(Request.query.T);
 					
 				}
@@ -133,6 +134,7 @@ server	= http.createServer(function (req, res) {
 			});
 			
 		} else if( Request.query.app == 'BrklyPrsr'){
+				//si la requete est pour berkeleyParser
 			
 				var sentence	= clean.clean(Request.query.sentence);
 				console.log('  	Request "BrklyPrsr"		: '+sentence);
@@ -146,7 +148,7 @@ server	= http.createServer(function (req, res) {
 		var	uri;
 
 		//si la requete est vide on renvoi la page d'accueil sinon on renvoi le fichier demandé
-		if(Request.href =='/maca')
+		if(Request.href =='/')
 			Request.pathname='/MacaWeb.html';
 		else if(Request.href == '/BrklyPrsr')
 				Request.pathname='/draw-parse-tree.html';
@@ -189,7 +191,7 @@ function processQueue ()
 {
 	
 	for(i in clients.items){
-		console.log('  Client :'+i);
+		//console.log('  Client :'+i);
 		if(clients.items [i].requests.length != 0){
 			console.log('  Execution Macaon ');
 			var req;
@@ -215,7 +217,8 @@ function processQueue ()
 			var sentence	= clean.clean(req.request.query.sentence),
 			filename		= crypto.createHash('md5').update(sentence).digest("hex"),
 			pathfile		= '/data/' + filename;
-			maca.macaon(pathfile,root,sentence,req.result,clients.items [i]);
+			console.log("  phrase :"+sentence);
+			maca.macaon(text,pathfile,root,sentence,req.result,clients.items [i]);
 		}
 	}
 }
@@ -240,3 +243,7 @@ setInterval(cleanBlacklist, 15*60*1000);
 server.listen(parseInt(port),host);
 
 console.log('  Server running at			: http://'+server.address().address+':'+server.address().port+'/');
+var child = exec('export PATH=~/local/bin/:$PATH',
+			function (error, stdout, stderr) {
+			}
+		);

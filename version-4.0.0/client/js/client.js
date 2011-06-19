@@ -1,7 +1,7 @@
 var canviz = new Canviz('graph_container'),
 	previous;
 
-Ajax.Responders.register({
+/*Ajax.Responders.register({
 	onCreate: function() {
 		$('busy').show();
 	},
@@ -10,7 +10,7 @@ Ajax.Responders.register({
 			$('busy').hide();
 		}
 	}
-});
+});*/
 
 function replace (sentence,org_char,cib_char){
 	
@@ -31,12 +31,11 @@ var request	= function ()
 	if (input.value == '')
 		return;
 	var xhr		= getXMLHttpRequest(),
-	sentence	= input.value,
 	date		= new Date(),
-	Time		= date.getTime()
-	doc			= document.location.href.split("/");
-	sentence	= encodeURIComponent(replace (sentence,"'","\'"));
-	
+	Time		= date.getTime(),
+	doc			= document.location.href.split("/"),
+	sentence	= encodeURIComponent(replace (input.value,"'","\'")),
+	tab;
 	if ((typeof(previous)=='undefined')||(sentence != previous)){
 		xhr.open("GET", doc[0]+"/?app=Maca&sentence="+sentence+"&T="+Time, true);
 		previous	= sentence;
@@ -46,11 +45,16 @@ var request	= function ()
 		if (xhr.readyState == 4 ){
 			if(xhr.status == 200 || xhr.status == 0){
 				
-				if(xhr.responseText != '')
-					canviz.load(xhr.responseText);
-				
-			}else if(xhr.status == 500 )
-					alert(xhr.responseText);
+				if(xhr.responseText != ''){
+					tab = xhr.responseText.split(':');
+					if(tab [0] == 'release')
+						canviz.load(tab [1]);
+					else{
+						var out = document.getElementById('output');
+						out.innerHTML = tab [1];
+					}
+				}
+			}
 		}
 	};
 

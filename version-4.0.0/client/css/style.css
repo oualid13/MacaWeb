@@ -1,77 +1,67 @@
 body {
+
 	margin: 0;
 	padding: 0;
-/* default text color for entire site*/
 	color: #222;
-/* you can set your own image and background color here */
-	/*background: #f4f4f4 url(http://macaon.lif.univ-mrs.fr/uploads/ngrey/body.png) repeat-x left top;*/
 	text-align: left;
-        font-family: "Trebuchet MS", arial, helvetica, sans-serif;
+    font-family: "Trebuchet MS", arial, helvetica, sans-serif;
 	font-size: 87.5%;
 	line-height: 1em;
 }
 
-/* header, we will hide h1 a text and replace it with an image, we assign a height for it so the image wont cut off */
+
 div#header {
-/* adjust according your image size */
+
 	height: 128px;
 	margin: 0;
 	padding: 0;
-	/* you can set your own image here, will go behind h1 a image */
 	background-color: #FFFFFF;
-/* border just the bottom */
 	border-bottom: 2px solid #c01010;
-	
 }
+
 div#header h1 a {
-/* you can set your own image here */
-	background: url(http://macaon.lif.univ-mrs.fr/uploads/macaon/images/macaon.png) no-repeat left top;
-/* this will make the "a" link a solid shape */
+
+	background: url(../img/macaon.png) no-repeat left top;
 	display: block;
-/* adjust according your image size */
 	height: 128px;
-/* this hides the text */
 	text-indent: -999em;
-/* old firefox would have shown underline for the link, this explicitly hides it */
 	text-decoration: none;
 }
+
 div#header h1 {
 	margin: 0;
 	padding: 0;
-/*these keep IE6 from pushing the header to more than the set size*/
 	line-height: 0;
 	font-size: 0;
-/* this will keep IE6 from flickering on hover */
 	background-color: #ffffff;
 }
+
 div#header h2 {
-/* this is where the site name is */
+
 	float: right;
 	line-height: 1.2em;
-/* this keeps IE6 from not showing the whole text */
 	font-size: 1.5em;
-/* keeps the size uniform */
 	margin: 35px 500px 0px 0px;
-/* adjust according your text size */
 	color: #222;
 }
+
 div#header h2.headright {
+
        font-style: bold;
        font-size: 3.5em;
        color: #000;
 }
-/*aaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
-div#body 
-{
-	/*position:absolute;*/
+
+div#body {
+
 	padding: 2px 10px;
 	color: #F0E39E;
 	background: #ffffff;
 	margin-left:25px;
-	
-	
 }
+
 #busy {
+
 	position: fixed;
 	z-index: 1;
 	left: 50%;
@@ -85,133 +75,131 @@ div#body
 	color: #fff;
 	opacity: 0.95;
 }
-#form
-{
+
+#form {
+
 	margin-left:40px;
 }
-#img
-{
 
-	background-image: url(../img/Maca.png);
-	background-repeat: no-repeat;
-	padding: 70px 200px; 
-	background-repeat: no-repeat;
-}
 #graph_container {
+
 	background: #fff;
 	margin: 0 auto;
 }
 
-p#footer
-{
+p#footer {
 	
 	line-height: 30px ;
 	margin-left:220px;
 	color: #8a0 ;
 	font-family: "Comic Sans MS", "Trebuchet MS", Times, "Times New Roman", serif;
 }
-/*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+
 div.footback {
-/* keep footer below content and menu */
+
 	clear: both;
-/* this sets 10px on right to let the right image show, the balance 10px left on next div */
 	padding: 0px 10px 0px 0px;
-/* you can set your own image here */
-	/*background: url(http://macaon.lif.univ-mrs.fr/uploads/ngrey/wfootrt.gif) no-repeat right top;*/
 }
+
 div#footer {
-/* this sets 10px on left to balance 10px right on last div */
+
 	padding: 0px 0px 0px 10px;
-/* color of text, the link color is set below */
 	color: #595959;
-/* you can set your own image here */
-/*	background: url(http://macaon.lif.univ-mrs.fr/uploads/ngrey/wtopleft.gif) no-repeat left top;*/
-border-top-width: 1px;
-border-top-style: solid;
-border-top-color: #c01010;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #c01010;
 }
+
 div.leftfoot {
 	float: left;
 	width: 30%;
 	margin-left: 20px
 }
+
 div#footer p {
-/* sets different font size from default */
+
 	font-size: 0.6em;
-/* some air for footer */
 	padding: 1.5em;
-/* centered text */
 	text-align: center;
 	margin: 0;
 }
+
 div#footer p a {
-/* footer link would be same color as default we want it same as footer text */
+
 	color: #595959;
 }
-/* as we hid all hr for accessibility we create new hr with div class="hr" element */
+
 div.hr {
+
 	height: 1px;
 	padding: 1em;
 	border-bottom: 1px dotted #c01010;
 	margin: 1em;
 }
-/* relational links under content */
+
 div.left49 {
-/* combined percentages of left+right equaling 100%  might lead to rounding error on some browser */
+
 	width: 70%;
 }
+
 div.right49 {
+
 	float: right;
 	width: 29%;
-/* set right to keep text on right */
 	text-align: right;
 }
-#footertalep table{
-margin: auto;
-text-align: left;
-vertical-align: middle;
-font-size: 12px;
-padding-bottom: 10px;
+
+#footertalep table {
+	
+	margin: auto;
+	text-align: left;
+	vertical-align: middle;
+	font-size: 12px;
+	padding-bottom: 10px;
 }
 
-#footertalep .right{
-text-align: right;
-font-size: 11px;
+#footertalep .right {
+
+	text-align: right;
+	font-size: 11px;
 }
 
 #footertalep a:link img {
+
         text-decoration: none;
         border: none;
         filter:alpha(opacity=50);
         -moz-opacity:0.5;
         -khtml-opacity:0.5;
         opacity:0.5;
-
 }
+
 #footertalep a:visited img {
+
         text-decoration: none;
         border: none;
         filter:alpha(opacity=50);
         -moz-opacity:0.5;
         -khtml-opacity:0.5;
         opacity:0.5;
-
 }
+
 #footertalep a:active img {
+
         text-decoration: none;
         border: none;
         filter:alpha(opacity=100);
         -moz-opacity:1;
         -khtml-opacity:1;
         opacity:1;
-
 }
+
 #footertalep a:hover img {
+
         text-decoration: none;
         border: none;
         filter:alpha(opacity=100);
         -moz-opacity:1;
         -khtml-opacity:1;
         opacity:1;
-
 }
